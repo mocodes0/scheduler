@@ -16,7 +16,14 @@ return (
         setInterviewer={props.setInterviewer}
         selected={interview.id === props.interviewer}
         />
-       
+        // this does not work if code breaks reference below
+      //   <InterviewerListItem 
+      //   key={interviewer.id}
+      //   name={interviewer.name}
+      //   avatar={interviewer.avatar}
+      //   selected={interviewer.id === value}
+      //   setInterviewer={() => onChange(interviewer.id)}    
+      // />
       )
     })}
   </ul>
