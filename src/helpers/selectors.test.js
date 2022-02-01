@@ -1,71 +1,118 @@
-import { getAppointmentsForDay } from "helpers/selectors";
 
-const state = {
-  days: [
-    {
-      id: 1,
-      name: "Monday",
-      appointments: [1, 2, 3]
-    },
-    {
-      id: 2,
-      name: "Tuesday",
-      appointments: [4, 5]
-    }
-  ],
-  appointments: {
-    "1": { id: 1, time: "12pm", interview: null },
-    "2": { id: 2, time: "1pm", interview: null },
-    "3": {
-      id: 3,
-      time: "2pm",
-      interview: { student: "Archie Cohen", interviewer: 2 }
-    },
-    "4": { id: 4, time: "3pm", interview: null },
-    "5": {
-      id: 5,
-      time: "4pm",
-      interview: { student: "Chad Takahashi", interviewer: 2 }
-    }
-  },
+// Right now we don't have getInterview selector function, so we'll need to implement it! This function will return an object that contains the interview data if it is passed an object that contains an interviewer.
 
-interviewers: {
-  "1": {  
-    "id": 1,
-    "name": "Sylvia Palmer",
-    "avatar": "https://i.imgur.com/LpaY82x.png"
-  },
-  "2": {
-    id: 2,
-    name: "Tori Malcolm",
-    avatar: "https://i.imgur.com/Nmx0Qxo.png"
+export function getInterview(state,interview) {
+  if (interview) {
+    const stateUpdated = {...interview, interviewer:state.interviewers[interview.interviewer]}//not right?
+    console.log("state.interviewer:---->",state.interviewers)
+    console.log("interviewer:---->",interview)
+
+    return stateUpdated
+  } else {
+    return null
   }
 }
-};
+ 
+
+export function getAppointmentsForDay(state, day) {
+  const filteredDays = state.days.filter( mappedDay => mappedDay.name === day);
+  if (!filteredDays.length) { return []; }
+  const appointmentArray = [];
+  for (let item in filteredDays[0].appointments){
+ 
+    appointmentArray.push(state.appointments[filteredDays[0].appointments[item]])
+  }
+return appointmentArray
+}
 
 
-test("getAppointmentsForDay returns an array", () => {
-  const result = getAppointmentsForDay(state, "Monday");
-  expect(Array.isArray(result)).toBe(true);
-});
 
-test("getAppointmentsForDay returns an array with a length matching the number of appointments for that day", () => {
-  const result = getAppointmentsForDay(state, "Monday");
-  expect(result.length).toEqual(3);
-});
 
-test("getAppointmentsForDay returns an array containing the correct appointment objects", () => {
-  const [first, second] = getAppointmentsForDay(state, "Tuesday");
-  expect(first).toEqual(state.appointments["4"]);
-  expect(second).toEqual(state.appointments["5"]);
-});
 
-test("getAppointmentsForDay returns an empty array when the days data is empty", () => {
-  const result = getAppointmentsForDay({ days: [] }, "Monday");
-  expect(result.length).toEqual(0);
-});
+export  function getInterviewersForDay(state, day) {
+  if (!state.interviewers) return [];
+  const filteredDay = state.days.filter( mappedDay => mappedDay.name === day)[0];
 
-test("getAppointmentsForDay returns an empty array when the day is not found", () => {
-  const result = getAppointmentsForDay(state, "Wednesday");
-  expect(result.length).toEqual(0);
-}); 
+  if (!filteredDay) return [];
+
+  if (!filteredDay.interviewers) return [];
+
+  const result =  Object.values(state.interviewers).filter( interviewer => filteredDay.interviewers.includes(interviewer.id))
+  console.log("result",result)
+  return result;
+}
+//const appointmentArray = []
+// const interviewerArray = []
+// const stateInterviewersArray = []
+
+// for (let appointmentArr of filteredDays) {
+//   //console.log("Array of appointment ids --->>>",appointmentArr.appointments)
+//   for (let appointmentId of appointmentArr.appointments){
+//      //console.log("each appointment id",appointmentId)
+     
+//        //console.log("interview",state.appointments[appointmentId].interview)  
+//        if (state.appointments[appointmentId].interview) {
+//           interviewerArray.push(state.appointments[appointmentId].interview.interviewer)
+//        }
+//   //appointmentArray.push(appointmentId)
+// }
+// }
+// //console.log("the interviwer Array",interviewerArray)
+// for (let interviewerId of interviewerArray) {
+// //console.log("interviewer",state.interviewers[interviewerId])
+// for (let stateInterviewer in state.interviewers){
+// //console.log("stateInterviewer ids",stateInterviewer)
+// stateInterviewersArray.push(parseInt(stateInterviewer))
+// }
+
+// }
+// //console.log("state interviewers",stateInterviewersArray)
+// for (let interviewerID of interviewerArray) {
+//   //console.log("-->",interviewerID)
+
+// for (let item of interviewerArray){
+//   if (stateInterviewersArray.includes(interviewerID)){
+//  // console.log("skipsloop---", item)
+//   stateInterviewersArray.splice( stateInterviewersArray.indexOf(item), 1 );
+// }
+// }  
+// }
+// //console.log("state interviewers after splice",stateInterviewersArray)
+// const finalInterviewerArray = []
+// for (let finalInterviewer of stateInterviewersArray){
+//  finalInterviewerArray.push(state.interviewers[finalInterviewer])
+// }
+// //console.log("appointmentId",appointmentArray)
+// // for ( let arrayItem in appointmentArray){
+  
+// //   console.log("state.interviewers at array item",state.interviewers[arrayItem][arrayItem])
+
+// // }
+// //console.log("state.interviewers",state.interviewers)
+// console.log("the answer_____",finalInterviewerArray)
+// return finalInterviewerArray
+ //get unique appoint ids array that dont exist in state.interviewers and retur final array
+
+
+
+
+
+
+
+
+
+
+//{
+//   const appointmentArr = getAppointmentsForDay(state, day)
+//   if (!appointmentArr.length) { return []; }
+//   const interviewersArray = [];
+//   console.log("mapped ---> ",appointmentArr)
+  
+//   for (let item of appointmentArr){
+//  //console.log(item.interview)
+//    if ( item.interview ) 
+//    {interviewersArray.push(state.interviewers[item.interview.interviewer])}
+//   }
+  //console.log(interviewersArray,"interviewersArray")
+
+// return interviewersArray}
