@@ -3,7 +3,7 @@ import React from "react"
 // onEdit:Function to be called when the user clicks the Edit button
 // onDelete:Function to be called when the user clicks the Delete button
 export default function (props) {
-  console.log("hello",props)
+  // console.log("hello",props)
 return (<main className="appointment__card appointment__card--show">
 <section className="appointment__card-left">
   <h2 className="text--regular">{props.student}</h2>
@@ -16,12 +16,14 @@ return (<main className="appointment__card appointment__card--show">
   <section className="appointment__actions">
     <img
       className="appointment__actions-button"
+      data-testid="Edit"
       src="images/edit.png"
       alt="Edit"
       onClick={props.onEdit}
     />
     <img
       className="appointment__actions-button"
+      data-testid="Delete"
       src="images/trash.png"
       alt="Delete"
       onClick={props.onDelete}

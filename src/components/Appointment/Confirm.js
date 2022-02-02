@@ -5,11 +5,12 @@ export default function Confirm (props) {
   return ( 
     <main 
     id={props.id}
-    className="appointment__card appointment__card--confirm">
-     <h1 className="text--semi-bold">{props.message}</h1>
+    className="appointment__card appointment__card--confirm"
+    data-testid="confirmModal">
+           <h1 className="text--semi-bold">{props.message}</h1>
      <section className="appointment__actions">
-       <Button danger onClick={props.onCancel}>Cancel</Button>
-       <Button danger onClick={props.onConfirm} >Confirm</Button>
+     <Button data-testid="cancelButton" danger onClick={props.onCancel}>Cancel</Button>
+       <Button data-testid="confirmButton" danger onClick={props.onConfirm} >Confirm</Button>
      </section>
     </main>)
 } 

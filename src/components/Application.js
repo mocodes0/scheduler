@@ -52,7 +52,7 @@ export default function Application(props) {
   
   // useEffect(() => {
   //   let promiseDays = axios.get(`/api/days`);
-  //   let promiseAppointments = axios.get(`/api/appointments`);
+  //   let promiseAppointments = (`/api/appointments`);
   //   let promiseInterviewers = axios.get(`/api/interviewers`);
 
 
@@ -64,17 +64,17 @@ export default function Application(props) {
   //     setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}));
   //   });
   // },[]);
-    console.log("the interviewer data",state.interviewers)
+    // console.log("the interviewer data",state.interviewers)
     const filteredAppointments = getAppointmentsForDay(state, state.day);
     const appointmentList = filteredAppointments.map(appointment => {
-      console.log("appointment ", appointment)
+      // console.log("appointment ", appointment)
 
       const interview = getInterview(state, appointment.interview);
 
-      console.log("interview",interview)
+      // console.log("interview",interview)
 
       const interviewersList = getInterviewersForDay(state, state.day)
-      console.log("interviewersList", interviewersList)
+      // console.log("interviewersList", interviewersList)
       return ( 
       <Appointment 
       interview={interview} 
@@ -105,7 +105,10 @@ export default function Application(props) {
           alt="Lighthouse Labs"
         />
       </section>
-      <section className="schedule">{appointmentList}</section>
+      <section className="schedule">
+        {appointmentList}
+        <Appointment id="last" time="5pm" />
+      </section>
     </main>
   );
 }

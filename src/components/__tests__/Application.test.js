@@ -1,11 +1,13 @@
-import React from "react";
+import  reducer, {
+  SET_DAY,
+  SET_APPLICATION_DATA,
+  SET_INTERVIEW
+} from "reducers/application";
 
-import { render, cleanup } from "@testing-library/react";
-
-import Application from "components/Application";
-
-afterEach(cleanup);
-
-it("renders without crashing", () => {
-  render(<Application />);
+describe("Application Reducer", () => {
+  it("thows an error with an unsupported type", () => {
+    expect(() => reducer({}, { type: null })).toThrowError(
+      /tried to reduce with unsupported action type/i
+    );
+  });
 });
