@@ -33,13 +33,4 @@ export default function useVisualMode (initial)  {
 export {useVisualMode}
 
   
-  
-// Create a transition function within useVisualMode that will take in a new mode and update the mode state with the new value.
-
-
-// function useCustomHook() {
-//   function action() {}
-
-//   return { action };
-// }
 

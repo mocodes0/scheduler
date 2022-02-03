@@ -52,7 +52,7 @@ const fixtures = {
     }
   }
 };
-//get http request functions
+
 export default {
   get: jest.fn(url => {
     if (url === "/api/days") {
@@ -91,15 +91,4 @@ export default {
     });
   })
 };
-
-//  return axios.put(`api/appointments/${id}`, appointment)
-//    .then(() => {
-//     if (!state.appointments[id].interview) {
-//       const dayObject = state.days.find(day => day.name === state.day);
-//       state.days[dayObject.id - 1].spots--;
-//       dispatch({ type: SET_INTERVIEW, id, interview })
-//     }else{
-//       dispatch({ type: SET_INTERVIEW, id, interview })
-//     }
-//   })
 

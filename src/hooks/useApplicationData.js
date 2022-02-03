@@ -5,13 +5,6 @@ import  reducer, {
   SET_APPLICATION_DATA,
   SET_INTERVIEW
 } from "reducers/application";
-//import  * as axios from 'axios';
-//import {axios,put} from "axios";
-
-
-
-
-
 
 export default function useApplicationData() {
   const [state, dispatch] = useReducer(reducer, {
@@ -58,7 +51,7 @@ export default function useApplicationData() {
       })
   }
 
-  //deletes the appointment
+
   const cancelInterview = (id) => {
     return axios.delete(`/api/appointments/${id}`)
       .then(() => {

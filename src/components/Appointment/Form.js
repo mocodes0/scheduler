@@ -23,7 +23,7 @@ import InterviewerList from "components/InterviewerList"
 
     props.onSave(name, interviewer);
   }
-// console.log("props.interviewers",props.interviewers)
+
   return (
     <main className="appointment__card appointment__card--create">
     <section className="appointment__card-left">
@@ -49,7 +49,6 @@ import InterviewerList from "components/InterviewerList"
               </section>
     </section>
   </main>
-// name:String
 
   )
  }

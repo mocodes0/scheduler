@@ -20,7 +20,7 @@ const ERROR_SAVE ="ERROR_SAVE"
 const ERROR_DELETE  ="ERROR_DELETE" 
 
 export default function Appointment(props){
-// console.log("Props.interview",props.interview)
+
  const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
@@ -53,7 +53,7 @@ function onEdit() {
       interviewer
     };
     transition(SAVING);
-    // console.log("-->",props)
+  
     props
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
@@ -61,9 +61,7 @@ function onEdit() {
 
      ;
   }
-  // console.log("**props**",props)
- //console.log( "************",props.interviewers[props.interview.interviewer])
-//  console.log(mode)
+
 
   return (
     <article className="appointment" data-testid="appointment">

@@ -168,8 +168,6 @@ describe("Application", () => {
 
     const spotsRemainingAfterAdd = getByTestId(day, "spotsRemaining")
       .textContent;
-    console.log(spotsRemainingAfterAdd);
-
     expect(spotsRemainingAfterAdd).toEqual(spotsRemaining);
   });
   it("shows the save error when failing to save an appointment", async () => {
