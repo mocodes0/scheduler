@@ -2,10 +2,9 @@
 
  Scheduler is a React application made by Mohamed Bashir that allows users to book, cancel and edit interviews throughout the weekdays. We combine a concise API with a WebSocket server to build a realtime experience. Scheduler was built with an extensive unit, integration, and end-to-end testing using Jest, Storybook, and Cypress. Please make sure your database is up and running, as well as the server to ensure you have the proper experience. Enjoy!
 
-## Screenshots
+## Preview
 
-!["Appointments"](https://github.com/mocodes0/scheduler/blob/master/docs/Interview-%20HomePage.png)
-!["Delete Appointments"](https://github.com/mocodes0/scheduler/blob/master/docs/EditAppointments.png)
+![](https://github.com/mocodes0/scheduler/blob/master/docs/Scheduler%20App%202.gif)
 
 ## Key Features on the Scheduler App
 - Interviews can be booked between Monday and Friday.
